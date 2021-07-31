@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<head>
+    <title>This is index page</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+    <link href='https://fonts.googleapis.com/css?family=Roboto:400,100,300,700' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../css/style.css"/>
+</head>
+<body>
+    <section>
+        <nav class="navbar navbar-expand-lg bg-dark navbar-dark py-3 fixed-top">
+            <div class="container">
+              <a href="#" class="navbar-brand">Book Library</a>
+      
+              <div class="collapse navbar-collapse" id="navmenu">
+                  <form>
+                      <div class="input-group">
+                  
+                          <input name="s" type="text" class="form-control rounded mx-4" placeholder="Search" aria-label="Search"
+                          aria-describedby="search-addon" />
+                          <button type="submit" value="search" class="btn btn-outline-primary mx-1">search</button>
+                  
+                  </div>
+                  </form>
+                <div class="navbar-nav mx-auto">
+                      <a  href="{% url 'bkinsert' %}"><button class="btn btn-primary mx-1">Add Book record</button></a>
+                  
+                </div>
+              </div>
+            </div>
+          </nav>
+    </section>
+    
+        <hr/>
+       
+    <section class="ftco-section">
+        <div class="container" style="padding-top: 50px; padding-bottom: 40px;">
+             <div class="row justify-content-center">
+                <div class="col-md-6 text-center mb-4">
+                    <h2 class="heading-section">Book List</h2>
+                </div>
+            </div>
+            <div class="row">
+                 <div class="col-md-12">
+                    <div class="table-wrap">
+                            <table class="table">
+                                <thead class="thead-primary">
+                                  <tr class="alert" role="alert" >
+                                    <th>Book Id</th>
+                                    <th>Title</th>
+                                    <th>Author</th>
+                                    <th>Genre</th>
+                                    <th>Height</th>
+                                    <th>Publisher</th>
+                                  </tr>
+                                </thead>
+                                {% for displayst in book %}
+                                <tbody>
+                                <tr >
+                                    <td>{{displayst.id}}</td>
+                                    <td>{{displayst.title}}</td>
+                                    <td>{{displayst.author}}</td>
+                                    <td>{{displayst.genre}}</td>
+                                    <td>{{displayst.height}}</td>
+                                    <td>{{displayst.publisher}}</td>
+                                    <td><a href="/Delete/{{displayst.id}}" onclick="return confirm('Are you sure you want to DELETE ?')">Delete</a></td>
+                                </tr>
+                                </tbody>
+
+                                {% endfor %}
+                        </table>
+                    </div>
+                </div>
+             </div>
+        </div>
+    </section>
+    <br>
+<section class="fixed-bottom">
+    <div class="p-3 bg-dark text-white text-center">
+        <div class="container text-center">
+          <p class="lead">Copyright &copy; 2021 Library</p>
+  
+          <a href="#" class="position-absolute bottom-0 end-0">
+            <i class="bi bi-arrow-up-circle h1"></i>
+          </a>
+        </div>
+    </div>
+</section>
+   
+  <script src="js/jquery.min.js"></script>
+  <script src="js/popper.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
